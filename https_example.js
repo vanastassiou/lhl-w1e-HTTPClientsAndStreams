@@ -6,12 +6,17 @@ var options = {
 };
 
 // called by https when the request is made.
-var callback = function() {
+var responseHandler = function(response) {
   console.log('In response handler callback!');
+  console.log('Response: ', response);
 }
 
 console.log("I'm about to make the request!");
 
-https.request(options, callback).end();
+https.request(options, responseHandler).end();
+/* Cannot actually figure out how the parameter in
+the anonymous function actually handles the incoming data.
+The node.js https.request documentation doesn't explain it.
+*/
 
 console.log("I've made the request!");
